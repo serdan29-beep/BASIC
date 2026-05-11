@@ -15,6 +15,7 @@ def enviar_telegram(mensaje):
         print("Error: Faltan credenciales de Telegram.")
         return
     url = f"https://api.telegram.org/bot{token}/sendMessage"
+    print(f"DEBUG: Intentando conectar a {url}") # Agrega esto
     payload = {"chat_id": chat_id, "text": mensaje}
     try:
         r = requests.post(url, json=payload)
