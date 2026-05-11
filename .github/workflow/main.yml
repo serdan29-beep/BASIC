@@ -1,0 +1,29 @@
+name: Monitor de Capacitacion Semanal
+
+on:
+  schedule:
+    - cron: '0 12 * * 1' # Se ejecuta todos los lunes a las 09:00 AM (hora Arg aprox)
+  workflow_dispatch: # Esto permite que lo ejecutes manualmente cuando quieras probar
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4 pandas
+
+      - name: Ejecutar script de monitoreo
+        env:
+          TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python monitor_capacitacion.py
