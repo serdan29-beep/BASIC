@@ -38,7 +38,7 @@ def cargar_historial(archivo):
         except:
             return []
 
-KEYWORDS = ["Python", "Datos", "Presupuesto", "Patrimonio", "Contabilidad", "BI", "Data Science", "Public Finance", "Inglés"]
+KEYWORDS = ["Python", "Datos", "Presupuesto", "Patrimonio", "Contabilidad", "BI", "Data Science", "Public Finance", "Inglés", "Perito", "Peritaje", "judicial"]
 SITIOS = {
     "MECON": "https://capacitacion.mecon.gob.ar/",
     "Capacitar": "https://www.argentina.gob.ar/capacitar",
